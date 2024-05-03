@@ -1,6 +1,6 @@
 # Requirements #
-- created by Oliver Jen
-- discord: olvier
+- Created by Oliver Jen
+- Discord: olvier
 
 # Requirements #
 - python 3.12.3
