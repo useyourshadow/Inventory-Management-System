@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inventory System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {font-family: "Lato", sans-serif}
+        .w3-bar, h1, button {font-family: "Montserrat", sans-serif}
+        .fa-anchor, .fa-coffee {font-size: 200px}
+        .fifth {
+            float: left;
+            width: 33.33%;
+        }
+        a.button {
+            -webkit-appearance: button;
+            -moz-appearance: button;
+            text-decoration: none;
+            color: initial;
+        }
+        .button {
+            background-color: white; /* Green */
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
+</head>
+<body>
+
+
+
+<!-- Header -->
+
+    <!-- Resistor Form -->
+    <div id="resistor" class="tabcontent">
+        <form class="w3-center" action="/add_resistor" method="POST">
+            <div class="w3-card">
+                <div class="w3-blue w3-padding-small">
+                    <p>Add Resistor</p>
+                </div>
+                <div class="w3-padding-16">
+                    <label for="resistance">Resistance:</label>
+                    <input type="number" id="resistance" name="resistance" placeholder="Resistance">
+                    <label for="tolerance">Tolerance:</label>
+                    <input type="number" id="tolerance" name="tolerance" placeholder="Tolerance">
+                    <input type="text" name="quantity" placeholder="Quantity">
+                    <input type="text" id="SKU_resistor" name="SKU" placeholder="SKU">
+                    <input type="submit" value="Add Resistor">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Solder Form -->
+    <div id="solder" class="tabcontent">
+        <form class="w3-center" action="/add_solder" method="POST">
+            <div class="w3-card">
+                <div class="w3-blue w3-padding-small">
+                    <p>Add Solder</p>
+                </div>
+                <div class="w3-padding-16">
+                    <label for="type_solder">Type:</label>
+                    <select id="type_solder" name="type">
+                        <option value="lead">Lead</option>
+                        <option value="lead-free">Lead-Free</option>
+                        <option value="rosin-core">Rosin-Core</option>
+                        <option value="acid-core">Acid-Core</option>
+                    </select>
+                    <label for="length_solder">Length (ft, decimal):</label>
+                    <input type="number" id="length_solder" name="length" step="0.01" required>
+                    <input type="text" name="quantity" placeholder="Quantity">
+                    <input type="text" id="SKU_solder" name="SKU" placeholder="SKU">
+                    <input type="submit" value="Add Solder">
+                </div>
+            </div>
+        </form>
+    </div>
+<!-- Wire Form -->
+<div id="wire" class="tabcontent">
+    <form class="w3-center" action="/add_wire" method="POST">
+        <div class="w3-card">
+            <div class="w3-blue w3-padding-small">
+                <p>Add Wire</p>
+            </div>
+            <div class="w3-padding-16">
+                <label for="gauge_wire">Gauge (in, decimal):</label>
+                <input type="number" id="gauge_wire" name="gauge" step="0.01" required>
+                <label for="length_wire">Length (ft, decimal):</label>
+                <input type="number" id="length_wire" name="length" step="0.01" required>
+                <input type="text" name="quantity" placeholder="Quantity">
+                <input type="text" id="SKU_wire" name="SKU" placeholder="SKU">
+                <input type="submit" value="Add Wire">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Display Cable Form -->
+<div id="display_cable" class="tabcontent">
+    <form class="w3-center" action="/add_displaycable" method="POST">
+        <div class="w3-card">
+            <div class="w3-blue w3-padding-small">
+                <p>Add Display Cable</p>
+            </div>
+            <div class="w3-padding-16">
+                <label for="type_display">Type:</label>
+                <select id="type_display" name="type">
+                    <option value="hdmi">HDMI</option>
+                    <option value="vga">VGA</option>
+                    <option value="displayport">DisplayPort</option>
+                    <option value="micro-hdmi">Micro HDMI</option>
+                </select>
+                <label for="length_display">Length (ft, decimal):</label>
+                <input type="number" id="length_display" name="length" step="0.01" required>
+                <label for="color_display">Color (hex code):</label>
+                <input type="text" id="color_display" name="color" placeholder="Color (hex code)">
+                <input type="text" name="quantity" placeholder="Quantity">
+                <input type="text" id="SKU_display" name="SKU" placeholder="SKU">
+                <input type="submit" value="Add Display Cable">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Ethernet Cable Form -->
+<div id="ethernet" class="tabcontent">
+    <form class="w3-center" action="/add_ethernetcable" method="POST">
+        <div class="w3-card">
+            <div class="w3-blue w3-padding-small">
+                <p>Add Ethernet Cable</p>
+            </div>
+            <div class="w3-padding-16">
+                <label for="alpha_ethernet">Alpha Type:</label>
+                <select id="alpha_ethernet" name="alpha">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="beta_ethernet">Beta Type:</label>
+                <select id="beta_ethernet" name="beta">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="speed_ethernet">Speed:</label>
+                <select id="speed_ethernet" name="speed">
+                    <option value="10mbps">10 Mbps</option>
+                    <option value="100mbps">100 Mbps</option>
+                    <option value="1gbps">1 Gbps</option>
+                    <option value="10gbps">10 Gbps</option>
+                </select>
+                <label for="length_ethernet">Length (ft, decimal):</label>
+                <input type="number" id="length_ethernet" name="length" step="0.01" required>
+                <input type="text" name="quantity" placeholder="Quantity">
+                <input type="text" id="SKU_ethernet" name="SKU" placeholder="SKU">
+                <input type="submit" value="Add Ethernet Cable">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+</body>
+</html>
+
+</body>
+</html>
+
+
+</header>
+
+
+
+
+    <div class="w3-container w3-center">
+        <!-- Get Quantity Form -->
+        <form class="w3-center" action="/get_quantity" method="GET">
+            <div class="w3-card">
+                <div class="w3-blue w3-padding-small">
+                    <p>Get Quantity</p>
+                </div>
+                <div class="w3-padding-16">
+                    <input type="text" name="SKU" placeholder="SKU">
+                    <input type="submit" value="Get Quantity">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="w3-container w3-center">
+        <!-- Get Inventory Form -->
+        <form class="w3-center" action="/get_inventory" method="GET">
+            <div class="w3-card">
+                <div class="w3-blue w3-padding-small">
+                    <p>Get Inventory</p>
+                </div>
+                <div class="w3-padding-16">
+                    <input type="submit" value="Get Inventory">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="w3-container w3-center">
+        <!-- Get Part Form -->
+        <form class="w3-center" action="/get_part" method="GET">
+            <div class="w3-card">
+                <div class="w3-blue w3-padding-small">
+                    <p>Get Part</p>
+                </div>
+                <div class="w3-padding-16">
+                    <input type="text" name="SKU" placeholder="SKU">
+                    <input type="submit" value="Get Part">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="w3-container w3-center">
+        <!-- Search Form -->
+        <form class="w3-center" action="/search" method="GET">
+            <div class="w3-card">
+                <div class="w3-blue w3-padding-small">
+                    <p>Search</p>
+                </div>
+                <div class="w3-padding-16">
+                    <input type="text" name="part_class" placeholder="Part Class">
+                    <input type="text" name="characteristics" placeholder="Characteristics">
+                    <input type="submit" value="Search">
+                </div>
+            </div>
+        </form>
+    </div>
+
+   <div class="w3-container w3-center">
+    <!-- Add Inventory Form -->
+    <form class="w3-center" action="/add_inventory" method="POST" id="addInventoryForm">
+        <div class="w3-card">
+            <div class="w3-blue w3-padding-small">
+                <p>Add Inventory</p>
+            </div>
+            <div class="w3-padding-16">
+                <input type="text" name="SKU" placeholder="SKU">
+                <input type="number" name="quantity" placeholder="Quantity">
+                <input type="submit" value="Add Inventory">
+            </div>
+        </div>
+    </form>
+</div>
+
+    <div class="w3-container w3-center">
+        <!-- Delete Part Form -->
+        <form class="w3-center" action="/delete_part" method="GET">
+            <div class="w3-card">
+                <div class="w3-blue w3-padding-small">
+                    <p>Delete Part</p>
+                </div>
+                <div class="w3-padding-16">
+                    <input type="text" name="SKU" placeholder="SKU">
+                    <input type="submit" value="Delete Part">
+                </div>
+            </div>
+        </form>
+    </div>
+</header>
+
