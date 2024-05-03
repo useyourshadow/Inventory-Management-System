@@ -96,6 +96,7 @@ Part deleted successfully
 #### Other Examples ####
 - Resistor        resistance = 1, tolerance = 2
 - Solder          solder_type = lead
+- Solder          solder_type = rosin-core
 - DisplayCable    cable_type = hdmi
 - EthernetCable   alpha_type = male
 - EthernetCable   beta_type = male
