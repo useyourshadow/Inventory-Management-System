@@ -1,4 +1,8 @@
 # Requirements #
+- created by Oliver Jen
+- discord: olvier
+
+# Requirements #
 - python 3.12.3
 
 ### modules ###
@@ -12,6 +16,7 @@
 
 # Why I chose this implementation #
 - Using an html website for a display allowed for a more straightfoward and user friendly experience and lessened possible user error
+  
 
 # Instruction #
 *These instructions are intended to be done on a windows machine*
