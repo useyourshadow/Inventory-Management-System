@@ -133,7 +133,7 @@ def search():
     part_class = globals().get(part_class_name)
     # Error for not finding a part class
     if part_class is None:
-        return jsonify({"error": f"Part class '{part_class_name}' not found"}), 400
+        return jsonify({"error": f"Part '{part_class_name}' not found"}), 400
     
     search_params = {}
     if characteristics:
@@ -148,12 +148,12 @@ def search():
                 if hasattr(part_class, key):
                     attr_type = getattr(part_class, key)
                     if isinstance(attr_type, Enum):
-                        # Converts value to enum member
+                        # Converts value to enum member and get rid of hyphens or 
                         value = attr_type[value.strip().replace("-", "_").upper()]
                 
                 search_params[key.strip()] = value.strip()
         except Exception as e:
-            return jsonify({"error": f"Failed to parse characteristics: {e}"}), 400
+            return jsonify({"error": f"Parsing failed: {e}"}), 400
     # Searches for parts based on the parameters
     found_parts = inventory_system.search(part_class, **search_params)
     found_parts_dict = [part.__dict__ for part in found_parts]

@@ -66,7 +66,7 @@ class Inventory:
                 if attr_name == 'sku' or attr_name == 'quantity':
                     continue
                 if getattr(existing_part, attr_name) != attr_value:
-                    raise ValueError("A part with SKU {} already exists with different characteristics".format(part.sku))
+                    raise ValueError("A part with SKU {} already exists".format(part.sku))
 
         # Checks if they don't have all required values
         for attr_name, attr_value in part.__dict__.items():
